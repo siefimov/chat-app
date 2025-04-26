@@ -14,22 +14,21 @@ export const ChatWindow: React.FC = () => {
   }, [messages]);
 
   return (
-    <div>
+    <div className="chat-window">
       {messages.map((message) => (
         <div
           key={message.id}
           className={`message ${message.sender === 'user' ? 'user' : 'bot'}`}
-          style={{
-            display: 'flex',
-            justifyItems: 'center',
-            alignItems: 'center',
-          }}
         >
-          <p>{message.sender === 'user' ? 'user: ' : 'bot: '}</p>
+          <div>{message.sender === 'user' ? (
+            <span className='avatar user'>U</span>
+            ) : (
+              <span className='avatar bot'>B</span>
+              )}</div>
           <span>{message.text}</span>
         </div>
       ))}
-      <div ref={messageEndRef} />
+      <div ref={messageEndRef} className='ref'/>
     </div>
   );
 };

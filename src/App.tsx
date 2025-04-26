@@ -4,10 +4,10 @@ import { ChatWindow } from './components/ChatWindow';
 
 export const App = () => {
   return (
-    <>
+    <div className="app-container">
       <ChatWindow />
       <ChatInput />
-    </>
+    </div>
   );
 };
 
