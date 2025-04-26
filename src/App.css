@@ -91,6 +91,11 @@
   background-color: #0056b3;
 }
 
+.message.bot.loading {
+  font-style: italic;
+  color: #777;
+}
+
 @media (max-width: 768px) {
   #root {
     padding: 0.5rem;

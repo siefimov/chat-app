@@ -3,6 +3,7 @@ import { useChatStore } from '../store';
 
 export const ChatWindow: React.FC = () => {
   const messages = useChatStore((state) => state.messages);
+  const isBotLoading = useChatStore((state) => state.isBotLoading);
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -20,15 +21,18 @@ export const ChatWindow: React.FC = () => {
           key={message.id}
           className={`message ${message.sender === 'user' ? 'user' : 'bot'}`}
         >
-          <div>{message.sender === 'user' ? (
-            <span className='avatar user'>U</span>
+          <div>
+            {message.sender === 'user' ? (
+              <span className="avatar user">U</span>
             ) : (
-              <span className='avatar bot'>B</span>
-              )}</div>
+              <span className="avatar bot">B</span>
+            )}
+          </div>
           <span>{message.text}</span>
         </div>
       ))}
-      <div ref={messageEndRef} className='ref'/>
+      {isBotLoading && <div className="message bot loading">Bot is typing...</div>}
+      <div ref={messageEndRef} className="ref" />
     </div>
   );
 };
