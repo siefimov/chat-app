@@ -1,9 +1,9 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-interface Message {
+export interface Message {
   id: string;
   text: string;
-  sender: "user" | "bot";
+  sender: 'user' | 'bot';
 }
 
 interface ChatState {
@@ -16,9 +16,9 @@ interface ChatState {
 
 export const useChatStore = create<ChatState>((set) => ({
   messages: [],
-  inputValue: "",
+  inputValue: '',
   addMessage: (newMessage) =>
     set((state) => ({ messages: [...state.messages, newMessage] })),
   setInputValue: (newValue) => set({ inputValue: newValue }),
-  clearInputValue: () => set({ inputValue: "" }),
+  clearInputValue: () => set({ inputValue: '' }),
 }));
