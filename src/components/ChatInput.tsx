@@ -7,6 +7,7 @@ export const ChatInput: React.FC = () => {
   const setInputValue = useChatStore((state) => state.setInputValue);
   const addMessage = useChatStore((state) => state.addMessage);
   const clearInputValue = useChatStore((state) => state.clearInputValue);
+  const setIsBotLoading = useChatStore(state => state.setIsBotLoading);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,6 +24,7 @@ export const ChatInput: React.FC = () => {
       addMessage(newMessage);
       clearInputValue();
 
+      setIsBotLoading(true);
       inputRef.current?.focus();
 
       setTimeout(() => {
@@ -32,6 +34,7 @@ export const ChatInput: React.FC = () => {
           sender: 'bot',
         };
         addMessage(botMessage);
+        setIsBotLoading(false);
       }, 1000);
     }
   };
