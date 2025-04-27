@@ -2,11 +2,9 @@ import { useEffect, useRef } from 'react';
 import { useChatStore } from '../store';
 
 export const ChatWindow: React.FC = () => {
-  const messages = useChatStore((state) => state.messages);
-  const isBotLoading = useChatStore((state) => state.isBotLoading);
+  const messages = useChatStore(state => state.messages);
+  const isBotLoading = useChatStore(state => state.isBotLoading);
   const messageEndRef = useRef<HTMLDivElement>(null);
-
-  console.log(messages);
 
   const scrollToBottom = () => {
     messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -34,7 +32,7 @@ export const ChatWindow: React.FC = () => {
 
   return (
     <div className="chat-window">
-      {messages.map((message) => (
+      {messages.map(message => (
         <div
           key={message.id}
           className={`message ${message.sender === 'user' ? 'user' : 'bot'}`}

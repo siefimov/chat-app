@@ -3,10 +3,10 @@ import { useChatStore } from '../store';
 import { Message } from '../store';
 
 export const ChatInput: React.FC = () => {
-  const inputValue = useChatStore((state) => state.inputValue);
-  const setInputValue = useChatStore((state) => state.setInputValue);
-  const addMessage = useChatStore((state) => state.addMessage);
-  const clearInputValue = useChatStore((state) => state.clearInputValue);
+  const inputValue = useChatStore(state => state.inputValue);
+  const setInputValue = useChatStore(state => state.setInputValue);
+  const addMessage = useChatStore(state => state.addMessage);
+  const clearInputValue = useChatStore(state => state.clearInputValue);
   const setIsBotLoading = useChatStore(state => state.setIsBotLoading);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -44,7 +44,7 @@ export const ChatInput: React.FC = () => {
 
   useEffect(() => {
     inputRef.current?.focus();
-  })
+  });
 
   return (
     <div className="chat-input">

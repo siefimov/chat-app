@@ -17,21 +17,21 @@ interface ChatState {
   setIsBotLoading: (isLoading: boolean) => void;
 }
 
-export const useChatStore = create<ChatState>((set) => ({
+export const useChatStore = create<ChatState>(set => ({
   messages: localStorage.getItem('chat-history')
     ? JSON.parse(localStorage.getItem('chat-history') as string)
     : [],
   inputValue: '',
   isBotLoading: false,
-  addMessage: (newMessage) =>
-    set((state) => {
+  addMessage: newMessage =>
+    set(state => {
       const updatedMessages = [...state.messages, newMessage];
       localStorage.setItem('chat-history', JSON.stringify(updatedMessages));
       return {
         messages: updatedMessages,
       };
     }),
-  setInputValue: (newValue) => set({ inputValue: newValue }),
+  setInputValue: newValue => set({ inputValue: newValue }),
   clearInputValue: () => set({ inputValue: '' }),
-  setIsBotLoading: (isLoading) => set({ isBotLoading: isLoading }),
+  setIsBotLoading: isLoading => set({ isBotLoading: isLoading }),
 }));
