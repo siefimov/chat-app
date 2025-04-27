@@ -6,6 +6,8 @@ export const ChatWindow: React.FC = () => {
   const isBotLoading = useChatStore((state) => state.isBotLoading);
   const messageEndRef = useRef<HTMLDivElement>(null);
 
+  console.log(messages);
+
   const scrollToBottom = () => {
     messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -14,10 +16,20 @@ export const ChatWindow: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
-  const formatTime = (date: Date): string => {
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    return `${hours}:${minutes}`;
+  const formatTime = (date: Date | string): string => {
+    if (date instanceof Date) {
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      return `${hours}:${minutes}`;
+    } else if (typeof date === 'string') {
+      const parsedDate = new Date(date);
+      if (!isNaN(parsedDate.getTime())) {
+        const hours = parsedDate.getHours().toString().padStart(2, '0');
+        const minutes = parsedDate.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+      }
+    }
+    return 'N/A';
   };
 
   return (
