@@ -16,10 +16,12 @@ export const ChatInput: React.FC = () => {
 
   const handleSendMessage = () => {
     if (inputValue.trim()) {
+      const currentDate = new Date();
       const newMessage: Message = {
         id: Date.now().toString(),
         text: inputValue,
         sender: 'user',
+        timestamp: currentDate,
       };
       addMessage(newMessage);
       clearInputValue();
@@ -32,6 +34,7 @@ export const ChatInput: React.FC = () => {
           id: Date.now().toString() + '-bot',
           text: `Automatic answer to: "${newMessage.text}"`,
           sender: 'bot',
+          timestamp: new Date(),
         };
         addMessage(botMessage);
         setIsBotLoading(false);

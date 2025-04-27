@@ -43,6 +43,12 @@
   align-self: ftart;
 }
 
+.message-time {
+  font-size: 0.7rem;
+  color: #777;
+  margin-left: auto;
+}
+
 .avatar {
   width: 30px;
   height: 30px;
