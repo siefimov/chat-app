@@ -44,7 +44,7 @@ export const ChatInput: React.FC = () => {
 
   useEffect(() => {
     inputRef.current?.focus();
-  });
+  }, []);
 
   return (
     <div className="chat-input">
