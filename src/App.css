@@ -161,7 +161,8 @@ body {
   }
 
   .chat-input input[type='text'] {
-    padding-right: 70px;
+    padding-right: 125px;
+    font-size: 14px;
   }
 
   .chat-input button {
@@ -171,6 +172,7 @@ body {
     transform: translateY(-50%);
     border-radius: 5px;
     font-size: 14px;
+    padding: 7px 20px;
   }
 }
 

@@ -43,8 +43,12 @@ export const ChatInput: React.FC = () => {
   };
 
   useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
+    if (inputRef.current) {
+      inputRef.current.style.height = 'auto';
+      inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
+      inputRef.current.focus();
+    }
+  }, [inputValue]);
 
   return (
     <div className="chat-input">
