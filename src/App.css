@@ -26,8 +26,12 @@ body {
   border: 1px solid #e0e0e0;
   margin-bottom: 15px;
   border-radius: 8px;
-  background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(
+    24deg,
+    rgba(240, 204, 219, 1) 0%,
+    rgba(196, 215, 242, 1) 67%
+  );
 }
 
 .message {
@@ -43,11 +47,13 @@ body {
 
 .message.user {
   background-color: #dfd5f4;
+  border: 1px solid #8154db;
   color: #1c1c1c;
 }
 
 .message.bot {
   background-color: #f1efef;
+  border: 1px solid #ccc;
   align-self: flex-start;
   color: #1c1c1c;
   flex-direction: row;
