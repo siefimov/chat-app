@@ -34,7 +34,6 @@ export const ChatWindow: React.FC = () => {
               <span className="avatar bot">B</span>
             )}
           </div>
-          {/* <span>{message.text}</span> */}
           <div className="message-text">{message.text}</div>
           <div className="message-time">{formatTime(message.timestamp)}</div>
         </div>

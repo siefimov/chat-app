@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useChatStore } from '../store';
 import { Message } from '../store';
 
@@ -41,6 +41,10 @@ export const ChatInput: React.FC = () => {
       }, 1000);
     }
   };
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  })
 
   return (
     <div className="chat-input">
