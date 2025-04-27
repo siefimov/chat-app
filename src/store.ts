@@ -18,11 +18,19 @@ interface ChatState {
 }
 
 export const useChatStore = create<ChatState>((set) => ({
-  messages: [],
+  messages: localStorage.getItem('chat-history')
+    ? JSON.parse(localStorage.getItem('chat-history') as string)
+    : [],
   inputValue: '',
   isBotLoading: false,
   addMessage: (newMessage) =>
-    set((state) => ({ messages: [...state.messages, newMessage] })),
+    set((state) => {
+      const updatedMessages = [...state.messages, newMessage];
+      localStorage.setItem('chat-history', JSON.stringify(updatedMessages));
+      return {
+        messages: updatedMessages,
+      };
+    }),
   setInputValue: (newValue) => set({ inputValue: newValue }),
   clearInputValue: () => set({ inputValue: '' }),
   setIsBotLoading: (isLoading) => set({ isBotLoading: isLoading }),
