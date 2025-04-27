@@ -14,6 +14,12 @@ export const ChatWindow: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
+  const formatTime = (date: Date): string => {
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  };
+
   return (
     <div className="chat-window">
       {messages.map((message) => (
@@ -28,10 +34,14 @@ export const ChatWindow: React.FC = () => {
               <span className="avatar bot">B</span>
             )}
           </div>
-          <span>{message.text}</span>
+          {/* <span>{message.text}</span> */}
+          <div className="message-text">{message.text}</div>
+          <div className="message-time">{formatTime(message.timestamp)}</div>
         </div>
       ))}
-      {isBotLoading && <div className="message bot loading">Bot is typing...</div>}
+      {isBotLoading && (
+        <div className="message bot loading">Bot is typing...</div>
+      )}
       <div ref={messageEndRef} className="ref" />
     </div>
   );
