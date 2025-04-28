@@ -2,7 +2,16 @@
 
 This is a simple Single Page Application (SPA) that simulates a chat between a user and a system. It does not connect to a real WebSocket server; all data is emulated.
 
-Demo[]
+## Demo
+[Live Preview](https://siefimov.github.io/chat-app/)
+
+## Technologies Used
+- React, TypeScript
+- Zustand
+- Vite
+- Css
+- React Hooks
+- LocalStorage
 
 ## How to Run the Project
 
